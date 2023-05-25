@@ -36,7 +36,6 @@ class userlogout(APIView):
         login = TblEmployeeLogin.objects.filter(employee_id=data["employee_id"]).latest('login_time')
         try:
             login_id = TblEmployeeLogin.objects.get(id=login.pk)
-            print(login_id)
             login_id.logout_time = datetime.now()
             login_id.save()
         except TblEmployeeLogin.DoesNotExist:
